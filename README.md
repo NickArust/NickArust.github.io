@@ -28,7 +28,7 @@ Topological Interactions between Point Clouds**
 3. **On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force**  
    Authors: Nickolas Arustamyan, Erik Lundberg, Zvi Rosen, Sean Perry, Christopher Cox 
    *Journal of Mathematical Physics*, 2021.  
-   [[Link to Preprint](#)]((https://arxiv.org/abs/2106.11416))
+   [[Link to Preprint](#)](https://arxiv.org/abs/2106.11416)
    
 
 ## Research

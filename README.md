@@ -32,7 +32,7 @@ Topological Interactions between Point Clouds**
    
 
 ## Research
-### [Curriculum Learning for Inverse Scattering]
+### Curriculum Learning for Inverse Scattering
 - **Overview**:I utilize Curriculum Learning models trained on multi-frequency data to generate initial guesses that are then fed into inverse problem solvers. These solvers utilize a Recursive Linearization architecture to converge to the true solution. 
 
 - **Results**: Our results show comparable results to models not using Curriculum Learning, as expected. What is most interesting is that we are able to still get these results even when using less data, up to 50% less in some cases. 

@@ -1,3 +1,4 @@
+# Nickolas Arustamyan
 ## Summary
 I am a Ph.D student in Mathematics with a strong background in Scientific Computing and Machine Learning. My research focuses on developing numerical algorithms for problems and combining these tools with ML models to get better results, and I have a particular interest in Inverse Scattering Problems and Digital Twins. I am currently a Ph.D student in Mathematics at the University of Central Florida and am working under Dr. Carlos Borges.
 
@@ -21,12 +22,12 @@ I am a Ph.D student in Mathematics with a strong background in Scientific Comput
 Topological Interactions between Point Clouds**  
    Authors: Nickolas Arustamyan, Hubert Wagner, Matthew Wheeler, Peter Bubenik  
    *SoCG*, 2024.  
-   [[Link to Preprint](#)](https://arxiv.org/abs/2402.15058)
+   [Link to Preprint](https://arxiv.org/abs/2402.15058)
 
 3. **On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force**  
    Authors: Nickolas Arustamyan, Erik Lundberg, Zvi Rosen, Sean Perry, Christopher Cox 
    *Journal of Mathematical Physics*, 2021.  
-   [[Link to Preprint](#)](https://arxiv.org/abs/2106.11416)
+   [Link to Preprint](https://arxiv.org/abs/2106.11416)
    
 
 ## Research

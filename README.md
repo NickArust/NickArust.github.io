@@ -21,7 +21,7 @@ I am a Ph.D student in Mathematics with a strong background in Scientific Comput
 2. **Mixup Barcodes: Quantifying
 Topological Interactions between Point Clouds**  
    Authors: Nickolas Arustamyan, Hubert Wagner, Matthew Wheeler, Peter Bubenik  
-   *SoCG*, 2024.  
+   *SoCG Workshop on Geometry and Machine Learning*, 2024.  
    [Link to Preprint](https://arxiv.org/abs/2402.15058)
 
 3. **On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force**  

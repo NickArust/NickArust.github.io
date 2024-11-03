@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Fun Facts
+permalink: /fun-facts/
 ---
 
 # Fun Facts

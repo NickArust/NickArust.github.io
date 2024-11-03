@@ -1,32 +1,120 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
+  /* Custom Font */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f0f0f0, #d9e4f5);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  /* Header Styling */
   header {
-    background-color: #333;
+    background: linear-gradient(135deg, #6c63ff, #3b28c7);
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 5px solid #333;
+  }
+  
+  header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
   }
   
   nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 10px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
   }
   
   nav ul li a {
-    color: white;
     text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
   }
   
   nav ul li a:hover {
-    text-decoration: underline;
+    color: #ffcc00;
+  }
+  
+  /* Main Content */
+  main {
+    margin: 20px auto;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Footer Styling */
+  footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    background: #333;
+    color: white;
+    border-top: 5px solid #6c63ff;
+  }
+  
+  footer p {
+    margin: 5px 0;
+  }
+  
+  /* Buttons */
+  button, a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #3b28c7, #6c63ff);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  button:hover, a.button:hover {
+    background: linear-gradient(135deg, #ffcc00, #ff9900);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2em;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    main {
+      padding: 15px;
+    }
+  }
+  
+  /* Animation */
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
   

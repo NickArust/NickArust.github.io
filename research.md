@@ -6,7 +6,7 @@ permalink: /research/
 
 ## Publications
 1. **Curriculum Learning for Inverse Scattering Problems**  
-   Authors: Nickolas Arustamyan, Carlos Borges, Jiequn Han, Jeremy Hoskins 
+   Authors: Nickolas Arustamyan, Carlos Borges
    *Pending Submission*, 2024.  
 
 

@@ -6,10 +6,10 @@ permalink: /fun-facts/
 
 # Fitness PRs (lbs)
 * Deadlift: 455x1, 425x2, 405x3
-* Seated Overhead Press: 190x1, 175x2, 135x10
+* Seated Overhead Press: 190x1, 175x2, 165x4 135x11
 * Back Squat: 340x1, 245x20
-* Front Squat: 320x1, 300x2
-* Bench Press: 275x1, 255x2
+* Front Squat: 335x1, 300x2
+* Bench Press: 280x1, 255x2
 * Mile: 6:46
 * 400m: 59s
 

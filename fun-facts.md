@@ -5,7 +5,7 @@ permalink: /fun-facts/
 ---
 
 # Fitness PRs (lbs)
-* Deadlift: 455x1, 425x2, 405x3
+* Deadlift: 455x1, 425x2, 405x3, 315x15
 * Seated Overhead Press: 190x1, 175x2, 165x4 135x11
 * Back Squat: 340x1, 245x20
 * Front Squat: 335x1, 300x2

@@ -37,6 +37,8 @@ Topological Interactions between Point Clouds**
 
 - **Technologies**: Python, Pytorch, Ripser
 
+- ![mnist trajectories](mnist_trajectories (1).png "Trajectories of Embeddings")
+
 ## Projects
 ### Real-Time Speech Enhancement System Using Deep Learning
 - **Description**: Implemented a Denoising Autoencoder combined with spectral subtraction to suppress background noises while preserving speech quality. The model was optimized for deployment on a Raspberry Pi using TFLite, achieving sub-100ms processing latency to enable real-time performance. System evaluation using industry-standard metrics (PESQ, STOI) demonstrated a 30% improvement in speech quality over baseline DSP methods.

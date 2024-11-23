@@ -37,7 +37,7 @@ Topological Interactions between Point Clouds**
 
 - **Technologies**: Python, Pytorch, Ripser
 
-- ![mnist trajectories](mnist_trajectories (1).png "Trajectories of Embeddings")
+
 
 ## Projects
 ### Real-Time Speech Enhancement System Using Deep Learning

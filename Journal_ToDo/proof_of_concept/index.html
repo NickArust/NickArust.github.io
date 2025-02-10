@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Journaling / Todo List POC</title>
+  <style>
+    /* Basic styling for a neat layout */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    .task-category {
+      margin-top: 20px;
+    }
+    .task-category h3 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .task-item {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+    .task-item label {
+      margin-left: 8px;
+    }
+    textarea {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Journaling / Todo List POC</h1>
+    <label for="datePicker">Select a date:</label>
+    <input type="date" id="datePicker" />
+
+    <h2>Tasks for <span id="selectedDate"></span></h2>
+    <div id="taskList"></div>
+
+    <h2>Journal Entry for <span id="selectedDateJournal"></span></h2>
+    <textarea id="journalEntry" rows="10" placeholder="Write your journal entry here..."></textarea>
+    <br />
+    <button id="saveJournal">Save Journal Entry</button>
+  </div>
+
+  <script>
+    // Example tasks data with added category property.
+    const tasksData = [
+      {
+        id: 1,
+        description: 'Brush teeth',
+        type: 'recurring',
+        recurrence: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        category: 'Self Care'
+      },
+      {
+        id: 2,
+        description: 'Do laundry',
+        type: 'recurring',
+        recurrence: ['Sunday'],
+        category: 'Self Care'
+      },
+      {
+        id: 3,
+        description: 'Go on a run',
+        type: 'recurring',
+        recurrence: ['Monday', 'Wednesday', 'Friday'],
+        category: 'Fitness'
+      },
+      {
+        id: 4,
+        description: 'Homework 2 from Real Analysis',
+        type: 'specific',
+        date: '2025-02-12',
+        category: 'School Work'
+      }
+    ];
+
+    /**
+     * Returns the tasks (both recurring and specific) that match the provided date.
+     * @param {string} dateStr - Date in the format YYYY-MM-DD.
+     * @returns {Array} Array of task objects.
+     */
+    function getTasksForDate(dateStr) {
+      const date = new Date(dateStr);
+      // Get the weekday as a string, e.g., "Sunday"
+      const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
+      
+      return tasksData.filter(task => {
+        if (task.type === 'specific' && task.date) {
+          return task.date === dateStr;
+        }
+        if (task.type === 'recurring' && task.recurrence) {
+          return task.recurrence.includes(weekday);
+        }
+        return false;
+      });
+    }
+
+    /**
+     * Saves the checkbox state of a task for the given date.
+     * @param {string} dateStr - Date as a string.
+     * @param {number} taskId - Unique task ID.
+     * @param {boolean} completed - True if checked.
+     */
+    function saveTaskCompletion(dateStr, taskId, completed) {
+      const key = `task_${dateStr}_${taskId}`;
+      localStorage.setItem(key, completed ? 'true' : 'false');
+    }
+
+    /**
+     * Loads the checkbox state for a task on a given date.
+     * @param {string} dateStr 
+     * @param {number} taskId 
+     * @returns {boolean} True if the task was marked complete.
+     */
+    function loadTaskCompletion(dateStr, taskId) {
+      const key = `task_${dateStr}_${taskId}`;
+      return localStorage.getItem(key) === 'true';
+    }
+
+    /**
+     * Renders tasks grouped by category.
+     */
+    function renderTasks(dateStr) {
+      const tasks = getTasksForDate(dateStr);
+      const taskListDiv = document.getElementById('taskList');
+      taskListDiv.innerHTML = ''; // Clear previous tasks
+
+      // Group tasks by category.
+      const tasksByCategory = {};
+      tasks.forEach(task => {
+        if (!tasksByCategory[task.category]) {
+          tasksByCategory[task.category] = [];
+        }
+        tasksByCategory[task.category].push(task);
+      });
+
+      // Iterate through each category and display its tasks.
+      Object.keys(tasksByCategory).forEach(category => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'task-category';
+
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.innerText = category;
+        categoryDiv.appendChild(categoryTitle);
+
+        tasksByCategory[category].forEach(task => {
+          const taskDiv = document.createElement('div');
+          taskDiv.className = 'task-item';
+
+          // Create checkbox
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.id = `task_${task.id}`;
+          checkbox.checked = loadTaskCompletion(dateStr, task.id);
+
+          // Save state when the checkbox is toggled.
+          checkbox.addEventListener('change', () => {
+            saveTaskCompletion(dateStr, task.id, checkbox.checked);
+          });
+
+          // Create label
+          const label = document.createElement('label');
+          label.setAttribute('for', `task_${task.id}`);
+          label.innerText = task.description;
+
+          taskDiv.appendChild(checkbox);
+          taskDiv.appendChild(label);
+          categoryDiv.appendChild(taskDiv);
+        });
+
+        taskListDiv.appendChild(categoryDiv);
+      });
+    }
+
+    /**
+     * Loads tasks and the journal entry for the selected date.
+     */
+    function loadForDate() {
+      const datePicker = document.getElementById('datePicker');
+      const selectedDate = datePicker.value;
+      document.getElementById('selectedDate').innerText = selectedDate;
+      document.getElementById('selectedDateJournal').innerText = selectedDate;
+
+      // Render tasks with checkboxes grouped by category.
+      renderTasks(selectedDate);
+
+      // Load journal entry from localStorage (if it exists)
+      const journalKey = 'journal_' + selectedDate;
+      const journalEntry = localStorage.getItem(journalKey) || '';
+      document.getElementById('journalEntry').value = journalEntry;
+    }
+
+    // Save journal entry to localStorage
+    document.getElementById('saveJournal').addEventListener('click', () => {
+      const date = document.getElementById('datePicker').value;
+      const journalEntry = document.getElementById('journalEntry').value;
+      const journalKey = 'journal_' + date;
+      localStorage.setItem(journalKey, journalEntry);
+      alert('Journal entry saved!');
+    });
+
+    // Update view when the date changes
+    document.getElementById('datePicker').addEventListener('change', loadForDate);
+
+    // Set the default date to today and load tasks and journal.
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('datePicker').value = today;
+    loadForDate();
+  </script>
+</body>
+</html>

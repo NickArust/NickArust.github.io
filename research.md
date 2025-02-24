@@ -28,14 +28,16 @@ Topological Interactions between Point Clouds**
 
 - **Results**: Our results show comparable results to models not using Curriculum Learning, as expected. What is most interesting is that we are able to still get these results even when using less data, up to 50% less in some cases.
 
-- ![results image](images/ErrorType_2_NoiseLevel_0.5.png)
+![results image](images/ErrorType_2_NoiseLevel_0.5.png)
+
+These results illustrate the Chamfer Error obtained after using the solver on two different datasets. Base had random initialization of weights for the Curriculum Learning and the Retrained had used a previously trained model with a similar frequency as the initialization for new model. As you can see, Retrained did much much better, illustrating that the CL framework works well.
 
 - **Technologies**: MATLAB, Python, Tensorflow
 
 ### Mixup Barcodes
 - **Overview**: I developed an automated pipeline for analyzing mixed-up datasets using topological data analysis. The workflow automated taking point cloud data, analyzing it using the computational topology software Ripser, and generating comprehensive visualizations and statistics.  We applied the pipeline to understanding how classification models learn by investigating how the embeddings of their predictions separated over time.
 
-- **Results**: The results showcased that intuition matched expectations where less mixed up data was more easibly seperable and vice versa. 
+- **Results**: The results showcased that intuition matched expectations where less mixed-up data was more easily separable and vice versa. 
 
 - **Technologies**: Python, Pytorch, Ripser
 

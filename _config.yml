@@ -3,7 +3,7 @@ author: Nickolas Arustamyan
 email: nickarust@gmail.com
 description: >- # your description
   Ph.D. student in Mathematics with a focus on Scientific Computing and Machine Learning.
-theme: null
+theme: jekyll-theme-cayman
 markdown: kramdown
 baseurl: "" 
 url: "https://nickarust.github.io"

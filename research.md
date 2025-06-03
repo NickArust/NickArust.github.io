@@ -1,53 +1,16 @@
 ---
 layout: default
-title: Research
+title: "Research"
+description: "Overview of research projects and publications."
 permalink: /research/
 ---
 
-## Publications
-1. **Curriculum Learning for Inverse Scattering Problems**  
-   Authors: Nickolas Arustamyan, Carlos Borges
-   *Pending Submission*, 2024.  
-
-
-2. **Mixup Barcodes: Quantifying
-Topological Interactions between Point Clouds**  
-   Authors: Nickolas Arustamyan, Hubert Wagner, Matthew Wheeler, Peter Bubenik  
-   *SoCG Workshop on Geometry and Machine Learning CG Week Workshop on Geometry and Machine Learning*, 2024,  
-   [Link to Preprint](https://arxiv.org/abs/2402.15058)
-
-3. **On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force**  
-   Authors: Nickolas Arustamyan, Erik Lundberg, Zvi Rosen, Sean Perry, Christopher Cox 
-   *Journal of Mathematical Physics*, 2021.  
-   [Link to Preprint](https://arxiv.org/abs/2106.11416)
-   
-
-## Active Research
-### Curriculum Learning for Inverse Scattering
-- **Overview**: I utilize Curriculum Learning models trained on multi-frequency data to generate initial guesses that are then fed into inverse problem solvers. These solvers utilize a Recursive Linearization architecture to converge to the true solution. 
-
-- **Results**: Our results show comparable results to models not using Curriculum Learning, as expected. What is most interesting is that we are able to still get these results even when using less data, up to 50% less in some cases.
-
-![results image](images/ErrorType_2_NoiseLevel_0.5.png)
-
-These results illustrate the Chamfer Error obtained after using the solver on two different datasets. Base had random initialization of weights for the Curriculum Learning and the Retrained had used a previously trained model with a similar frequency as the initialization for new model. As you can see, Retrained did much much better, illustrating that the CL framework works well.
-
-- **Technologies**: MATLAB, Python, Tensorflow
-
-### Mixup Barcodes
-- **Overview**: I developed an automated pipeline for analyzing mixed-up datasets using topological data analysis. The workflow automated taking point cloud data, analyzing it using the computational topology software Ripser, and generating comprehensive visualizations and statistics.  We applied the pipeline to understanding how classification models learn by investigating how the embeddings of their predictions separated over time.
-
-- **Results**: The results showcased that intuition matched expectations where less mixed-up data was more easily separable and vice versa. 
-
-- **Technologies**: Python, Pytorch, Ripser
-
-
-
-## Projects
-### Real-Time Speech Enhancement System Using Deep Learning
-- **Description**: Implemented a Denoising Autoencoder combined with spectral subtraction to suppress background noises while preserving speech quality. The model was optimized for deployment on a Raspberry Pi using TFLite, achieving sub-100ms processing latency to enable real-time performance. System evaluation using industry-standard metrics (PESQ, STOI) demonstrated a 30% improvement in speech quality over baseline DSP methods.
-- **Technologies**: Python, PyTorch, TFLite, ONNX, NumPy, C++
-
-### Optimizing Public Transit Routes Using NYC MTA Open Data
-- **Description**: Analyzed over 1 million records of public transit data to identify peak ridership patterns and congestion bottlenecks through time-series and geospatial analysis. Developed a predictive model using Random Forest to forecast ridership trends with an R² score of 0.85, enabling more accurate demand forecasting. Created an interactive dashboard using Streamlit for dynamic visualization and exploration of transit data and optimization scenarios.
-- **Technologies**: Python, Pandas, scikit-learn, Matplotlib, Plotly, Streamlit
+<h2>Research Projects</h2>
+<div class="project-grid">
+  <div class="project-card">
+    <img src="{{ '/assets/images/mnist_traj.png' | relative_url }}" alt="MNIST Trajectory Visualization" />
+    <h3>Deep Learning for Acoustic Inverse Scattering</h3>
+    <p>Developed a neural-net-based warm start for Newton solvers in MATLAB to improve convergence speed in inverse scattering problem simulations. <a href="#">Read more</a></p>
+  </div>
+  <!-- Add more project cards as needed -->
+</div>

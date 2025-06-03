@@ -1,9 +1,5 @@
 title: "Nickolas Arustamyan"
-author: Nickolas Arustamyan
-email: nickarust@gmail.com
-description: >- # your description
-  Ph.D. student in Mathematics with a focus on Scientific Computing and Machine Learning.
-theme: null
-markdown: kramdown
-baseurl: "" 
+description: "PhD Student in Applied Mathematics | Research Portfolio"
+author: "Nickolas Arustamyan"
+baseurl: ""
 url: "https://nickarust.github.io"

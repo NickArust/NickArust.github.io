@@ -1,12 +1,6 @@
-<header>
-  <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-  <nav>
-    <ul>
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
-      <li><a href="{{ '/research/' | relative_url }}">Research</a></li>
-      <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
-      <li><a href="{{ '/fun-facts/' | relative_url }}">Fun Facts</a></li>
-    </ul>
-  </nav>
+<header class="site-header">
+  <div class="container">
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <p>{{ site.description }}</p>
+  </div>
 </header>

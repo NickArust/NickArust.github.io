@@ -1,20 +1,22 @@
 ---
 layout: default
-title: Fun Facts
+title: "Fun Facts"
+description: "A few personal tidbits and interests."
 permalink: /fun-facts/
 ---
 
-# Fitness PRs (lbs)
-* Deadlift: 465x1, 425x2, 405x3, 315x15
-* Seated Overhead Press: 190x1, 175x2, 165x4 135x11
-* Back Squat: 340x1, 245x20
-* Front Squat: 335x1, 300x2
-* Bench Press: 285x1, 255x2
-* Mile: 6:46
-* 400m: 59s
+<h2>Fun Facts About Me</h2>
 
-# Other things
-* I am in the top 1 percent of Tetris players
-* I speak Russian
-* I am a big Miami Heat Fan
-
+<div class="fact-item">
+  <p>🎓 I graduated with a double major in Mathematics and Statistics, and a minor in Electrical Engineering from UF, with honors in both majors.</p>
+</div>
+<div class="fact-item">
+  <p>🐶 I have a dog named Jaykey who keeps me company while I code.</p>
+</div>
+<div class="fact-item">
+  <p>🌲 I'm passionate about planting trees and plan to plant 1000 more trees on my college campus.</p>
+</div>
+<div class="fact-item">
+  <p>🎹 My roommate Trace is learning to play the piano, and I love listening to his practice sessions.</p>
+</div>
+<!-- Add additional facts as desired -->

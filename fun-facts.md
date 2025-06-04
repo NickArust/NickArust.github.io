@@ -8,13 +8,13 @@ permalink: /fun-facts/
 <h2>Fun Facts About Me</h2>
 
 <div class="fact-item">
-  <p>🎓 I graduated with a double major in Mathematics and Statistics, and a minor in Electrical Engineering from UF, with honors in both majors.</p>
+  <p> I graduated with a double major in Mathematics and Statistics, and a minor in Electrical Engineering from UF, with honors in both majors.</p>
 </div>
 <div class="fact-item">
-  <p>🐶 I have a dog named Jaykey who keeps me company while I code.</p>
+  <p> I have a dog named Jaykey who keeps me company while I code.</p>
 </div>
 <div class="fact-item">
-  <p>🌲 I'm passionate about planting trees and plan to plant 1000 more trees on my college campus.</p>
+  <p> I'm passionate about planting trees and plan to plant 1000 more trees on my college campus.</p>
 </div>
 <div class="fact-item">
   <p>I can deadlift 465 pounds.</p>

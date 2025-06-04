@@ -17,6 +17,6 @@ permalink: /fun-facts/
   <p>🌲 I'm passionate about planting trees and plan to plant 1000 more trees on my college campus.</p>
 </div>
 <div class="fact-item">
-  <p>🎹 My roommate Trace is learning to play the piano, and I love listening to his practice sessions.</p>
+  <p>I can deadlift 465 pounds.</p>
 </div>
 <!-- Add additional facts as desired -->

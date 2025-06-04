@@ -1,9 +1,10 @@
 ---
 layout: project
 title: "Deep Learning for Acoustic Inverse Scattering"
-date: 2024-10-01
-image: /assets/images/mnist_traj.png
+date: 2025-06-04
+image: /assets/images/ErrorType_2_NoiseLevel_0.5.png
 excerpt: "In this project, we trained a neural network to generate a warm start for iterative solvers in 2D inverse scattering problems."
+permalink: /research_projects/CurrNN/
 ---
 
 ## Abstract

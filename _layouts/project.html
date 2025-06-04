@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | truncate: 160 }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+</head>
+<body>
+  {% include header.html %}
+  {% include nav.html %}
+
+  <main class="content">
+    <article class="project-detail">
+      <h1>{{ page.title }}</h1>
+      <p class="project-date"><strong>Date:</strong> {{ page.date | date: "%B %Y" }}</p>
+      {% if page.image %}
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="project-image" />
+      {% endif %}
+      {{ content }}
+    </article>
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>

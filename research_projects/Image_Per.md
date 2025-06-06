@@ -3,119 +3,66 @@ layout: project
 title: "Mixup Barcodes: Quantifying Geometric-Topological Interactions between Point Clouds"
 date: 2025-06-04
 image: images/mixup_barcode_visualization.png
-excerpt: "We propose mixup barcodes, a novel topological descriptor capturing geometric-topological interactions between point clouds, and apply it to analyze disentanglement in neural network embeddings."
+excerpt: "Automated Python pipeline for computing mixup barcodes, generating topological statistics, and visualizations of point-cloud interactions."
 permalink: /research_projects/MixupBarcodes/
 ---
 
-## Abstract
+## Project Overview
 
-We introduce **mixup barcodes**, a new geometric‐topological descriptor that enriches a standard persistence barcode with image persistent homology information to quantify how one point cloud interacts with another in the same ambient space. For two point clouds \(A\) and \(B\), the mixup barcode of the inclusion \(A \hookrightarrow A \cup B\) records, for each homological feature born in \(A\), how its lifetime shortens when \(B\) is added—capturing notions such as overlap (degree 0), encirclement (degree 1), and surrounding (degree \(n-1\)). We present a practical algorithm for computing mixup barcodes, prove its correctness under simplex-wise filtrations, and demonstrate its utility by analyzing disentanglement in intermediate embeddings of neural networks trained on MNIST and CIFAR-10.
+Mixup barcodes extend standard persistence barcodes by incorporating image-persistence information to measure how one point cloud \(B\) perturbs the homological features of another \(A\).  For each feature born in \(A\), the mixup barcode records its “premature death” when \(B\) is added, yielding quantitative descriptors of overlap, encirclement, and more.  We proved correctness under simplex-wise filtrations, implemented an efficient algorithm compatible with Ripser, and applied it to analyze class-wise disentanglement in neural-network embeddings on MNIST and CIFAR-10.
 
+## My Contribution
 
+I developed the entire end-to-end Python pipeline that automates data ingestion, Ripser integration, and result processing:
 
-## Methodology
+1. **Data handling**  
+   - Wrote routines to generate example point clouds or accept arbitrary user-provided data.  
+   - Converted raw points into the filtration format required by Ripser.
 
-1. **Filtration Setup**  
-   - Given two finite point clouds \(A\) and \(B\) in \(\mathbb{R}^d\), construct Vietoris–Rips filtrations  
-     \[
-       \{\,\mathrm{VR}(A; r_i)\}_{i=1}^n \quad\text{and}\quad \{\,\mathrm{VR}(A \cup B; r_i)\}_{i=1}^n
-     \]  
-     using a common sorted sequence of radii \(r_1 \le r_2 \le \cdots \le r_n\).  
-   - Denote these filtered simplicial complexes by \(L = \bigl\{L_i = \mathrm{VR}(A; r_i)\bigr\}\) and \(K = \bigl\{K_i = \mathrm{VR}(A \cup B; r_i)\bigr\}\).
+2. **Ripser integration**  
+   - Built a command-line script and Python function so users can invoke the pipeline via a simple function call (e.g. `compute_mixup(...)`) or CLI.  
+   - Automated feeding of formatted data into the Ripser library for persistence and image-persistence computation.
 
-2. **Mixup Barcode Definition**  
-   - Compute the standard persistence barcode of \(H_k(L)\) (persistent homology of \(A\)) and the image persistence barcode of \(H_k(A)\hookrightarrow H_k(A\cup B)\).  
-   - Match intervals in both barcodes by their birth index \(b\). For each matched pair \([b,d)\) (in \(H_k(L)\)) and \([b,d')\) (in image persistence), record a **mixup triple** \((b,\,d',\,d)\). Unmatched intervals \([b,d)\) become triples \((b,b,d)\).  
-   - Each triple encodes:
-     - **Birth** \(b\): index (or filtration value) where a homology class appears in \(A\).  
-     - **Image death** \(d'\): index where that class dies in \(A\cup B\) (premature death).  
-     - **True death** \(d\): index where it dies in \(A\) alone.  
-   - The **mixup sub-bar** is \([d',\,d)\), whose length \(d - d'\) measures how much \(B\) shortens the lifetime of that feature.
+3. **Result parsing & segmentation**  
+   - Parsed Ripser’s output to extract intervals by homological degree (dimension).  
+   - Segmented the raw barcodes into standard and image bars for each dimension.
 
-3. **Algorithm for Computation**  
-   - Form the boundary matrix \(B_K\) of \(K\), ordered by filtration index, then reorder rows so that simplices of \(L\) come before those of \(K\setminus L\).  
-   - Derive \(B_L\) by zeroing out rows/columns in \(B_K\) that correspond solely to simplices in \(K\setminus L\).  
-   - Apply the standard Gaussian‐elimination‐style reduction to both \(B_L\) (to recover \(\mathrm{PH}(A)\)) and \(B_K\) (to recover image persistence of \(A\hookrightarrow A\cup B\)).  
-   - For each \(k\)-simplex \(\sigma\in L\) that births a homology class in \(A\), identify indices \(\tau\) and \(\tau'\) of the simplices that kill that class in \(A\) and in \(A\cup B\), respectively. Record \((\mathrm{birth}=f(\sigma),\,\mathrm{death}'=f(\tau'),\,\mathrm{death}=f(\tau))\).  
-   - This yields the mixup barcode in degree \(k\).
+4. **Mixup computation & statistics**  
+   - Computed mixup triples \((b,d',d)\) and derived mixup sub-bar lengths for each degree.  
+   - Calculated key statistics: mean-mixup %, total mixup %, and overall mixup.
 
-4. **Statistical Summaries**  
-   - **Mixup** of a triple \((b,d',d)\) is \(\;d - d'\), the length of its mixup sub-bar.  
-   - **Total mixup** of \(A\hookrightarrow A\cup B\) is \(\sum_{(b,d',d)} (d - d')\).  
-   - **Mixup percentage** of triple \(t\) is  
-     \[
-       \text{mixup\%}(t) \;=\; \frac{d - d'}{\,d - b\,}\;\in [0,1].
-     \]  
-   - **Mean mixup percentage** is the average of mixup\% over all triples, giving a scale-invariant measure.
+5. **Visualization**  
+   - Used Matplotlib (and TensorFlow when processing ML embeddings) to generate all figures in the paper—from mixup barcodes to layer-wise mixup profiles.  
+   - Packaged plotting routines so that visuals are produced automatically alongside statistics.
 
-5. **Application to Neural Network Disentanglement**  
-   - Train a 5-layer Multi-Layer Perceptron (MLP) on either MNIST (digits 0,1,2) or CIFAR-10 (classes airplane, car, bird) using ReLU activations and MSE loss.  
-   - At each training epoch \(t\) and for each hidden layer \(k\), collect the intermediate embeddings of the test set, separately for each label class \(X_{k}^{(q)}\).  
-   - For each label \(q\), let  
-     \[
-       A = X_{k}^{(q)} \quad\text{and}\quad B = \bigcup_{r\ne q} X_{k}^{(r)},
-     \]  
-     and compute the mixup barcode in degree 0 (connectivity) and degree 1 (loops).  
-   - Record the **mixup profile**:  
-     \[
-       P_{k,t} \;=\; \max_{q}\Bigl\{\text{mean-mixup\%}\bigl(X_{k}^{(q)},\,\bigcup_{r\ne q}X_{k}^{(r)}\bigr)\Bigr\}.
-     \]  
-   - Subsample \(A\) (500 points) and \(B\) (100 points) via \(k\)-medoids to keep computation tractable while preserving outliers.
+## Pipeline & Usage
 
-## Results
+- **Implementation**: Python 3 with NumPy, Matplotlib; TensorFlow for embedding examples.  
+- **Invocation**:  
+  - **Function call**:  
+    ```python
+    from mixup_pipeline import compute_mixup
+    stats, figures = compute_mixup(A, B, degrees=[0,1])
+    ```  
+  - **CLI**:  
+    ```bash
+    $ mixup_pipeline --inputA A.csv --inputB B.csv --output-dir results/
+    ```  
+- **Outputs**:  
+  - Structured JSON or CSV of mixup statistics per degree.  
+  - Publication-ready PNG and PDF figures for barcodes and mixup profiles.
 
-- **MNIST (Digits 0,1,2)**  
-  - Pairwise mean mixup percentages in degree 0 are all below 0.01, confirming almost perfect linear separability of digit classes.  
-  - The mixup barcode between the “4” and “9” samples (highest among all pairs) shows many short mixup sub-bars, indicative of slight overlaps along shallow interfaces.  
-  - **Mixup profiles** across layers and epochs (degree 0 and degree 1) drop rapidly: after a few training steps, all class embeddings become almost entirely disentangled.  
+## Performance
 
-  ![MNIST Mixup Profile (deg 0)](/assets/images/mixup_mnist_deg0.png)  
-  _Degree 0 mixup profile on MNIST: the maximum mean-mixup\% across labels falls near zero by layer 3._
+The pipeline executes end-to-end in seconds for typical point-cloud sizes; the only significant time cost is the Ripser calls themselves.  All data formatting, parsing, analysis, and plotting code runs with negligible overhead.
 
-  ![MNIST Mixup Profile (deg 1)](/assets/images/mixup_mnist_deg1.png)  
-  _Degree 1 mixup profile on MNIST: capturing loops, which also shrink to zero as training progresses._
+## Code & Repository
 
-- **CIFAR-10 (Airplane, Car, Bird)**  
-  - Pairwise mean mixup percentages in degree 0 are an order of magnitude higher (up to 0.09 between airplane and deer), reflecting greater topological overlap.  
-  - The mixup barcode between “airplane” and “deer” samples reveals longer mixup sub-bars, consistent with more entangled manifolds.  
-  - **Mixup profiles** remain high throughout training: degree 0 mixup plateaus near 0.05–0.10, and degree 1 mixup stays nontrivial even after 50 epochs, correlating with the model’s lower test accuracy (~76%).
-
-  ![CIFAR Mixup Profile (deg 0)](/assets/images/mixup_cifar_deg0.png)  
-  _Degree 0 mixup profile on CIFAR-10: plateauing at higher values than MNIST, indicating persistent overlaps._
-
-  ![CIFAR Mixup Profile (deg 1)](/assets/images/mixup_cifar_deg1.png)  
-  _Degree 1 mixup profile on CIFAR-10: nonzero loops remain, suggesting unresolved entanglements._
-
-- **Key Observations**  
-  - **MNIST**: Low mixup in both degrees → embeddings disentangle quickly → high test accuracy.  
-  - **CIFAR-10**: Significantly higher mixup → persistent entanglements → lower test accuracy.  
-  - Mixup barcodes capture interactions that standard persistence alone would miss (since each class by itself may have nontrivial topology, but entanglement is only revealed when comparing two classes).
-
-## Code & Data
-
-- **Implementation**  
-  - The mixup barcode algorithm is implemented within the [Ripserer](https://github.com/Ripserer) framework (extension by Čufar et al.).  
-  - Core repository (private until publication):  
-    - MATLAB scripts for Vietoris–Rips filtration and boundary matrix construction.  
-    - Python/Julia modules wrapping Ripserer for standard and image persistence.  
-    - Subsampling via \(k\)-medoids (using scikit-learn’s `KMedoids`).  
-
-- **Experimental Notebooks**  
-  - **MNIST Analysis**: Jupyter notebook showing data loading, network training, intermediate embedding extraction, subsampling, and mixup barcode computation.
-  - **CIFAR-10 Analysis**: Similar pipeline adapted to CIFAR-10 images 
-
-- **Data**  
-  - Original datasets:  
-    - MNIST (digits 0,1,2)—preprocessed, available from [Yann LeCun’s repository](http://yann.lecun.com/exdb/mnist/).  
-    - CIFAR-10 (classes airplane, car, bird)—available at [https://www.cs.toronto.edu/~kriz/cifar.html](https://www.cs.toronto.edu/~kriz/cifar.html).  
-  - Processed point clouds and subsamples are stored in `/data/mixup/{mnist,cifar}/` with separate folders for each layer and epoch.  
+A public GitHub repository containing the full pipeline, usage examples, and Jupyter notebooks will be released upon journal acceptance.
 
 ## Publication
 
-Wagner, H., Arustamyan, N., Wheeler, M., & Bubenik, P. “Mixup Barcodes: Quantifying Geometric‐Topological Interactions between Point Clouds.” Submitted to **SoCG 2024**; arXiv:2402.15058v2 (December 2024).  
-[PDF on arXiv](https://arxiv.org/abs/2402.15058v2)  
-
----
-
-**Acknowledgments**  
-We thank Hubert Wagner for supervision and Matja Čufar for guidance on Ripserer integration. This work was partly supported by NSF Grant DMS-XXXXXXX.
+Wagner, H., Arustamyan, N., Wheeler, M., & Bubenik, P.  
+“Mixup Barcodes: Quantifying Geometric-Topological Interactions between Point Clouds.”  
+Submitted to SoCG 2024; arXiv:2402.15058v2 (December 2024).  
+[PDF on arXiv](https://arxiv.org/abs/2402.15058v2)

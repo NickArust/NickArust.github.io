@@ -2,7 +2,7 @@
 layout: default
 title: "About Me"
 description: "A description of my life"
-permalink: /contact/
+permalink: /about-me/
 ---
 
 <h2>Education</h2>

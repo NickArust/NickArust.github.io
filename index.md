@@ -10,7 +10,9 @@ description: "Welcome to my personal research portfolio."
   <p>PhD Student in Applied Mathematics at UCF | Inverse Problems & Scientific Computing</p>
   <div class="call-to-actions">
     <a href="{{ '/research/' | relative_url }}" class="btn">Research ▶</a>
-    <a href="{{ '/fun-facts/' | relative_url }}" class="btn">Fun Facts ▶</a>
+    <a href="{{ '/about-me/' | relative_url }}" class="btn">About Me ▶</a>
     <a href="{{ '/contact/' | relative_url }}" class="btn">Contact ▶</a>
   </div>
+
+  
 </div>

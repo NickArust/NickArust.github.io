@@ -11,4 +11,5 @@ permalink: /contact/
   <li>💼 <a href="https://linkedin.com/in/nickolasarustamyan" target="_blank">LinkedIn</a></li>
   <li>🐙 <a href="https://github.com/NickArust" target="_blank">GitHub</a></li>
   <li>🎦 <a href="https://www.youtube.com/@NickArustamyan" target=_blank>YouTube</a></li>
+  <li>🏫 <a href="https://scholar.google.com/citations?user=TYuN1ygAAAAJ&hl=en&oi=ao" target=_blank>Google Scholar</a></li>
 </ul>

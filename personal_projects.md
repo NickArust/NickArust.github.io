@@ -11,6 +11,9 @@ permalink: /projects/
     <h3>Finite Difference for Laplace Equation </h3>
     <p>I am writing a numerically stable finite difference solver for the Laplace equation on a square grid. I am using C++ <a href="{{ 'personal_projects/finite_diff/' | relative_url }}">Read more</a></p>
     </div>
+
+
+    
 <h2>Completed Projects</h2>
  
 </div>

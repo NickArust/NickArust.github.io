@@ -9,7 +9,7 @@ permalink: /about-me/
 <ul>
   <li>UCF - PhD in Mathematics</li>
   <li>UF - B.S. in Mathematics, B.S. in Statistics, Minor in Electrical Engineering</li>
-  <li>FAU High School - High School</li>
+  <li>FAU High School - High School Diploma</li>
 </ul>
 
 <h2>Research Interests</h2>

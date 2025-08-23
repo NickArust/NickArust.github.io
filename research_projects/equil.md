@@ -2,9 +2,9 @@
 layout: project
 title: "Deep Learning for Acoustic Inverse Scattering"
 date: 2025-06-04
-image: images/equillibira.png
+image: images/equillibira.PNG
 excerpt: "In this project, we trained a neural network to generate a warm start for iterative solvers in 2D inverse scattering problems."
-permalink: /research_projects/CurrNN/
+permalink: /research_projects/equil/
 ---
 
 ## Abstract

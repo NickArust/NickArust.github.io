@@ -14,7 +14,7 @@ My very first research project ended up being published in the *Journal of Mathe
 
 ## The problem in a nutshell
 
-The paper, *On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force* :contentReference[oaicite:0]{index=0}, asked a deceptively simple question:  
+The paper, *On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force*, asked a deceptively simple question:  
 
 > If you place \(n\) Newtonian point masses in the plane and add a quadratic potential (arising from a centrifugal force), how many equilibrium points can the system have?
 

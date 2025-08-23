@@ -14,6 +14,9 @@ description: "Welcome to my personal research portfolio."
     <a href="{{ '/contact/' | relative_url }}" class="btn">Contact ▶</a>
   </div>
 
+<h2>Current Positions: </h2>
 
+* Instructor of Record - Calc 2
+* GRA - Research Cyberinfrastructure Facilitator
   
 </div>

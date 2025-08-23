@@ -6,44 +6,60 @@ image: images/equillibira.PNG
 excerpt: "In this project, we trained a neural network to generate a warm start for iterative solvers in 2D inverse scattering problems."
 permalink: /research_projects/equil/
 ---
+# My First Research Project: Equilibria in Newtonian Systems
 
-## Abstract
+My very first research project ended up being published in the *Journal of Mathematical Physics*. It was a collaboration with several faculty and graduate students, and I contributed by writing all the **numerical simulation and plotting code** — in both **Python** and **Macaulay2**, a software system for algebraic geometry and commutative algebra.  
 
-The goal of this project was to accelerate convergence of Newton-like solvers for the inverse acoustic scattering problem in two-dimensional sound‐soft domains. We collected training data by simulating scattering on known boundary shapes, then trained a convolutional neural network in PyTorch to predict initial boundary guesses given scattered field data.
+---
 
-## Methodology
+## The problem in a nutshell
 
-1. **Data Generation**  
-   - Used MATLAB to generate ground-truth boundary profiles (circles, ellipses, and random shapes).  
-   - Simulated far-field data at 360 angles for each boundary.  
-   - Saved each sample as a `(boundary, far-field-array)` pair.
+The paper, *On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force* :contentReference[oaicite:0]{index=0}, asked a deceptively simple question:  
 
-2. **Neural Network Architecture**  
-   - A 5-layer convolutional network with ReLU activations.  
-   - Input: 360-point far-field magnitude vector.  
-   - Output: 64-point parameterization of boundary curve.  
-   - Trained with MSE loss for 200 epochs, learning rate 1e-3, batch size 32.
+> If you place \(n\) Newtonian point masses in the plane and add a quadratic potential (arising from a centrifugal force), how many equilibrium points can the system have?
 
-3. **Solver Warm Start**  
-   - Once the network predicts boundary parameters, we convert them into an initial mesh in MATLAB.  
-   - Passed that mesh into a Newton-CG solver to refine until convergence.  
-   - Observed a 40% reduction in iteration count vs. random or zero‐fill initialization.
+Equilibria are critical points of the potential: places where forces cancel out and a test particle would remain at rest. This question is connected to:  
+- The **circular restricted \(n+1\)-body problem** in celestial mechanics.  
+- **Maxwell’s problem** in electrostatics (point charges).  
+- **Gravitational lensing**, where equilibria correspond to the number of images of a lensed star.  
 
-## Results
+---
 
-![Convergence Comparison](/assets/images/convergence_plot.png)
+## My contribution
 
-- **Baseline**: 100–120 iterations to reach tolerance.  
-- **With NN warm start**: 60–70 iterations.
+My role was to implement and run the simulations that checked the theory against actual computations. This involved two main tools:  
 
-Quantitatively, the NN initialization reduced mean iteration count from 110 to 65 (± 5).
+- **Python**: For setting up large-scale numerical experiments, iterating over many parameter values, and producing the plots that appear in the paper.  
+- **Macaulay2**: For algebraic computations involving polynomial systems, Gröbner bases, and degree calculations that help bound the number of equilibria.  
 
-## Code & Data
+This mix of coding and math was my first experience working directly at the boundary of **computational mathematics and theoretical physics**.  
 
-- **MATLAB data generator**: [GitHub link](https://github.com/NickArust/inverse-scattering-data).  
-- **PyTorch training code**: [GitHub link](https://github.com/NickArust/acoustic-ml-model).
+---
 
-## Publication
+## Key results
 
-Arustamyan, N., Borges, C. “Neural Warm Starts for Inverse Scattering.” _Journal of Computational Physics_, 2024. [DOI link]
+The team proved several important results:  
 
+- **Finiteness**: For a generic configuration of masses, the number of equilibria is finite.  
+- **Lower bound**: There are always at least \(n+1\) equilibria, and this bound is sharp.  
+- **Upper bound**: Using algebraic geometry tools, we established an exponential upper bound.  
+- **Special configurations**: For ring-shaped arrangements of masses, the system produces at least \(5n-5\) equilibria, agreeing with prior numerical evidence.  
+
+---
+
+## Why this project mattered to me
+
+This was my first real taste of research: taking an abstract math problem and grounding it with computation. I learned how to:  
+
+- Translate mathematical systems into **code that runs experiments**.  
+- Use algebraic software like **Macaulay2** alongside more traditional numerical scripting.  
+- Collaborate in a research group and contribute code that directly supports new theorems.  
+
+Seeing my name as a coauthor on a published paper — and knowing the simulations I wrote helped verify and illustrate the results — was a formative experience. It showed me how much I enjoy working at the intersection of **mathematics, algorithms, and computation**.  
+
+---
+
+## Reference
+
+Nickolas Arustamyan, Christopher Cox, Erik Lundberg, Sean Perry, and Zvi Rosen.  
+[*On the Number of Equilibria Balancing Newtonian Point Masses with a Central Force*](https://arxiv.org/abs/2106.11416). *Journal of Mathematical Physics*, 2021.  

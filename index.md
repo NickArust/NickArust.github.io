@@ -5,7 +5,7 @@ description: "Welcome to my personal research portfolio."
 ---
 
 <div class="hero">
-  <img src="{{ '/assets/images/prof.jpg' | relative_url }}" alt="Nickolas Arustamyan" class="hero-image" />
+  <img src="{{ '/images/prof.JPG' | relative_url }}" alt="Nickolas Arustamyan" class="hero-image" />
   <h1>Nickolas Arustamyan</h1>
   <p>PhD Student in Applied Mathematics at UCF | Inverse Problems & Scientific Computing</p>
   <div class="call-to-actions">
@@ -13,6 +13,7 @@ description: "Welcome to my personal research portfolio."
     <a href="{{ '/about-me/' | relative_url }}" class="btn">About Me ▶</a>
     <a href="{{ '/contact/' | relative_url }}" class="btn">Contact ▶</a>
   </div>
+
 
   
 </div>

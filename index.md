@@ -18,9 +18,8 @@ description: "Ph.D. Student in Applied Mathematics | Scientific Computing & ML"
   </div>
 </div>
 
-<div class="content">
-
 ## About Me
+
 I am a Ph.D. student working under **Dr. Carlos Borges**. I bridge the gap between classical numerical algorithms and modern deep learning. My work focuses on **Inverse Scattering Problems**, creating "Digital Twins," and accelerating physical simulations using Neural Networks.
 
 I am currently looking for **Summer 2026 Internships** in Scientific ML and High-Performance Computing.
@@ -56,7 +55,5 @@ I am currently looking for **Summer 2026 Internships** in Scientific ML and High
       </div>
     </div>
   </div>
-
-</div>
 
 </div>

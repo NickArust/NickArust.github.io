@@ -19,7 +19,7 @@ My research focuses on applying and developing numerical algorithms for Inverse 
 <h2>Personal Bests</h2>
 <ul>
 <li>Deadlift - 485lbs</li>
-<li>Bench Press - 285lbs</li>
+<li>Bench Press - 300lbs</li>
 <li>Back Squat - 340lbs</li>
 <li>Front Squat - 335lbs</li>
 <li>Seated Overhead Press - 190lbs</li>

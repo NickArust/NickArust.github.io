@@ -1,34 +1,38 @@
 ---
 layout: default
-title: "Research"
-description: "Overview of research projects and publications."
+title: "Personal Projects"
+description: "A collection of my personal coding projects in Scientific Computing and ML."
 permalink: /projects/
 ---
+
 <h1>Personal Projects</h1>
 
 <div class="project-grid">
-  <div class="project-card">
-    <h3>Finite Difference for Laplace Equation </h3>
-    <p>I wrote numerically stable finite difference solver for the Laplace equation on a square grid. I am using C++ <a href="{{ 'personal_projects/finite_diff/' | relative_url }}">Read more</a></p>
-    </div>
+  {% assign projects = site.pages | sort: 'date' | reverse %}
+  {% for project in projects %}
+    {% if project.url contains '/personal_projects/' and project.title %}
       <div class="project-card">
-    <h3>Conway's Game of Life </h3>
-    <p>I wrote a simple version of Conway's Game of Life in Python <a href="{{ 'personal_projects/conway_GOL/' | relative_url }}">Read more</a></p>
-    </div>
-    
+        
+        {% if project.image %}
+          <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+        {% endif %}
 
-  <div class="project-card">
-    <h3>Boids</h3>
-    <p>I wrote a simple version of the Boids simulation in Python <a href="{{ 'personal_projects/boids/' | relative_url }}">Read more</a></p>
-    </div>
-
-  <div class="project-card">
-    <h3>Transit Forcaster</h3>
-    <p>I built a dashboard to predict ridership for NYC MTA <a href="{{ 'personal_projects/transit/' | relative_url }}">Read more</a></p>
-    </div>
-      <div class="project-card">
-    <h3>Speech Enhancement </h3>
-    <p>I built a speech filtering and enhancement system that runs on a Raspberry Pi<a href="{{ 'personal_projects/speech/' | relative_url }}">Read more</a></p>
-    </div>
-
+        <div class="project-content">
+          <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+          
+          <p>{{ project.excerpt | default: "View project details" | strip_html | truncate: 120 }}</p>
+          
+          {% if project.skills %}
+            <div class="tech-stack" style="margin-top: 0.5rem;">
+              {% for skill in project.skills %}
+                <span class="tech-badge">{{ skill }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <a href="{{ project.url | relative_url }}" class="btn" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">Read More</a>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
 </div>
